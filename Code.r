@@ -2,7 +2,7 @@ file <- read.csv(//location//file.csv, Header = T) \\file has all data points me
 ifelse(nrow(file)>250, data<-file[c(nrow(file)-249, nrow(file)),], data<-file)
 while(TRUE)
 {
-wait(15s)
+Sys.sleep(15)
 if(class(read.csv(//location//data.csv)) != "try-error")
     {
     new <- read.csv(//location//new.csv, header = T)
