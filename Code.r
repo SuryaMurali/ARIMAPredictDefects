@@ -1,20 +1,19 @@
 file <- read.csv(//location//file.csv, Header = T) \\file has all data points measured so far
 ifelse(nrow(file)>250, data<-file[c(nrow(file)-248:nrow(file)),], data<-file)
-count <- 2000 // no. of iterations needed
+count <- 2000 \\ no. of iterations needed
 for ( i in 1:count)
 {
 Sys.sleep(15)
 if(class(read.csv(//location//data.csv)) != "try-error")
     {
     new <- read.csv(//location//new.csv, header = T)
-    data <- data[-1,]
     data[250,] <- new[2,]
     }
 else
     {
     next
     }
-x <- BoxCox.lambda(data[,ncol(data)]) //renders data homoscedastic
+x <- BoxCox.lambda(data[,ncol(data)]) \\renders data homoscedastic
 
 \\Dickey-Fuller test to check for stationarity w.r.t trend and seasonality of the mean
 ns <- nsdiffs(x)  
